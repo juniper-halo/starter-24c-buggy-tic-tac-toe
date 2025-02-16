@@ -60,8 +60,8 @@ char CheckWinner(const std::vector<std::vector<char>>& board) {
     }
   }
 
-  if (board[0][0] == board[1][1] && board[1][1] == board[2][2]
-      && board[0][2] != ' ') {
+  if (board[0][0] == board[1][1] && board[1][1] == board[2][2] &&
+      board[0][0] != ' ') {
     return board[0][0];
   }
 
@@ -69,7 +69,7 @@ char CheckWinner(const std::vector<std::vector<char>>& board) {
       board[0][2] != ' ') {
     return board[0][2];
   }
-  
+
   return ' ';
 }
 
