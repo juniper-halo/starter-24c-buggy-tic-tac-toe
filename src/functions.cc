@@ -22,7 +22,11 @@ bool MakeMove(std::vector<std::vector<char>>& board,
               int row,
               int col,
               char player) {
-  if (row <= 0 || row > kBoardSize || col <= 0 || col > kBoardSize) {
+  if (row < 0 || row >= kBoardSize) {
+    std::cerr << "Error: Move out of bounds!\n";
+    return false;
+  }
+  if (col < 0 || col >= kBoardSize) {
     std::cerr << "Error: Move out of bounds!\n";
     return false;
   }
