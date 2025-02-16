@@ -24,15 +24,18 @@ int main() {
     }
 
     if (MakeMove(board, row, col, current_player)) {
-      if (IsBoardFull(board)) {
-        PrintBoard(board);
-        std::cout << "It's a tie!" << std::endl;
-        break;
-      }
+      //this is a critical fix because if the winning move is the last move, then we need to check for winning before calling the IsBoardFull functions, because in that case we'd return a tie where there should've been a win.
+      //////////////////////////////////////////////////////
       char winner = CheckWinner(board);
       if (winner != ' ') {
         PrintBoard(board);
         std::cout << "Player " << winner << " wins!" << std::endl;
+        break;
+      }
+      //////////////////////////////////////////////////////
+      if (IsBoardFull(board)) {
+        PrintBoard(board);
+        std::cout << "It's a tie!" << std::endl;
         break;
       }
       SwitchPlayer(current_player);
